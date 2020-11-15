@@ -9,14 +9,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <label class="label" for="name">Enter name:</label>
+      <input id="name" type="text" />
+      <button style={{backgroundColor: 'blue', color: 'white'}}>Start</button>
       </header>
     </div>
   );
