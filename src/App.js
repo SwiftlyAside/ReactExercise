@@ -2,21 +2,25 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const buttonText = { text: 'Click me' }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <label className="label" htmlFor="name">Enter name:</label>
-      <input id="name" type="text" />
-  <button style={{backgroundColor: 'blue', color: 'white'}}>{buttonText.text}</button>
-      </header>
-    </div>
-  );
+    return (
+        <div className="ui container comments">
+            <img src={logo} className="App-logo" alt="logo"/>
+            <div className="comment">
+                <a href="/" className="avatar">
+                    <img alt="avatar"/>
+                </a>
+                <div className="content">
+                    <a href="/" className="author">
+                        Sam
+                    </a>
+                    <div className="metadata">
+                        <span className="date">Today at 6:00PM</span>
+                    </div>
+                    <div className="text">Nice blog post!</div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
