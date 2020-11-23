@@ -3,11 +3,13 @@ import './App.css';
 import faker from 'faker';
 import CommentDetail from "./CommentDetail";
 import ApprovalCard from "./ApprovalCard";
+import SeasonDisplay from "./SeasonDisplay";
 
 function App() {
     return (
         <div className="ui container comments">
             <img src={logo} className="App-logo" alt="logo"/>
+            <SeasonDisplay />
             <ApprovalCard>
                 <div>
                     <h4>Warning!</h4>
