@@ -4,18 +4,18 @@ class SeasonDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {lat: null};
+
+        window.navigator.geolocation.getCurrentPosition(
+            position => {
+                this.setState({lat: position.coords.latitude})
+            },
+            positionError => console.log(positionError)
+        );
     }
 
     render() {
-        window.navigator.geolocation.getCurrentPosition(
-            position => console.log(position),
-            positionError => console.log(positionError)
-        );
         return (
-            <div>
-                <div>Season Display</div>
-                <div>Latitude:</div>
-            </div>
+            <div>Latitude: {this.state.lat}</div>
         );
     };
 }
