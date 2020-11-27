@@ -7,4 +7,10 @@ module.exports = {
     node: true,
   },
   extends: ['airbnb', 'plugin:prettier/recommended'],
+  rules: {
+    'react/destructuring-assignment': 'off',
+    'react/prop-types': 'warn',
+    'react/jsx-filename-extension': 'off',
+    'react/react-in-jsx-scope': 'warn',
+  },
 };

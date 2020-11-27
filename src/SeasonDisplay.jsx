@@ -15,14 +15,28 @@ class SeasonDisplay extends React.Component {
     );
   }
 
+  componentDidMount() {
+    console.log('Rendered');
+  }
+
   render() {
-    return (
-      <div>
-        Latitude: {this.state.lat}
-        <br />
-        Error: {this.state.errorMessage}
-      </div>
-    );
+    if (!this.state.errorMessage && this.state.lat) {
+      return (
+        <div>
+          Latitude:
+          {this.state.lat}
+        </div>
+      );
+    }
+    if (this.state.errorMessage && !this.state.lat) {
+      return (
+        <div>
+          Error:
+          {this.state.errorMessage}
+        </div>
+      );
+    }
+    return <div>Loading...</div>;
   }
 }
 
