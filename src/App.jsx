@@ -9,8 +9,8 @@ import SeasonDisplay from './SeasonDisplay';
 function App() {
   return (
     <div className="ui container comments">
-      <img src={logo} className="App-logo" alt="logo" />
       <SeasonDisplay />
+      <img src={logo} className="App-logo" alt="logo" />
       <ApprovalCard>
         <div>
           <h4>Warning!</h4>
