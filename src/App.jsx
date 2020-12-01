@@ -1,48 +1,39 @@
 import React from 'react';
-import faker from 'faker';
-import logo from './logo.svg';
 import './App.css';
-import CommentDetail from './CommentDetail';
-import ApprovalCard from './ApprovalCard';
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
-function App() {
-  return (
-    <div className="ui container comments">
-      <SeasonDisplay />
-      <img src={logo} className="App-logo" alt="logo" />
-      <ApprovalCard>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { lat: null, errorMessage: '' };
+  }
+
+  componentDidMount() {
+    window.navigator.geolocation.getCurrentPosition(
+      position => this.setState({ lat: position.coords.latitude }),
+      positionError => this.setState({ errorMessage: positionError.message }),
+    );
+  }
+
+  renderContent() {
+    if (this.state.errorMessage && !this.state.lat) {
+      return (
         <div>
-          <h4>Warning!</h4>
-          Are you sure you want to do this?
+          Error:
+          {this.state.errorMessage}
         </div>
-      </ApprovalCard>
-      <ApprovalCard>
-        <CommentDetail
-          author="Sam"
-          timeAgo="Today at 4:45PM"
-          content="Nice blog post!"
-          avatar={faker.image.animals()}
-        />
-      </ApprovalCard>
-      <ApprovalCard>
-        <CommentDetail
-          author="Alex"
-          timeAgo="Today at 6:45PM"
-          content="I like the subject"
-          avatar={faker.image.animals()}
-        />
-      </ApprovalCard>
-      <ApprovalCard>
-        <CommentDetail
-          author="Jane"
-          timeAgo="Yesterday at 4:45PM"
-          content="I like the writing."
-          avatar={faker.image.animals()}
-        />
-      </ApprovalCard>
-    </div>
-  );
+      );
+    }
+    if (!this.state.errorMessage && this.state.lat) {
+      return <SeasonDisplay lat={this.state.lat} />;
+    }
+    return <Spinner message="Please accept location request." />;
+  }
+
+  render() {
+    return <div className="border red">{this.renderContent()}</div>;
+  }
 }
 
 export default App;
