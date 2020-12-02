@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
-import SeasonDisplay from './SeasonDisplay';
-import Spinner from './Spinner';
+import SearchBar from './SearchBar';
 
-class App extends React.Component {
-  constructor(props) {
+const App = () => {
+  return (
+    <div className="ui container">
+      <SearchBar />
+    </div>
+  );
+  /*  constructor(props) {
     super(props);
     this.state = { lat: null, errorMessage: '' };
   }
@@ -33,7 +37,7 @@ class App extends React.Component {
 
   render() {
     return <div className="border red">{this.renderContent()}</div>;
-  }
-}
+  } */
+};
 
 export default App;
