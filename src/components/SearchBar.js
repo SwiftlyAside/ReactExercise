@@ -2,14 +2,9 @@ import React from 'react';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class SearchBar extends React.Component {
-  // eslint-disable-next-line class-methods-use-this
-  onInputChange(event) {
-    console.log(event.target.value);
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  onInputClick() {
-    console.log('Input was clicked');
+  constructor(props) {
+    super(props);
+    this.state = { term: '' };
   }
 
   render() {
@@ -21,8 +16,10 @@ class SearchBar extends React.Component {
             <label>Image Search</label>
             <input
               type="text"
-              onClick={this.onInputClick}
-              onChange={this.onInputChange}
+              value={this.state.term}
+              onChange={event => {
+                this.setState({ term: event.target.value.toUpperCase() });
+              }}
             />
           </div>
         </form>
