@@ -1,10 +1,30 @@
 import React from 'react';
-import './App.css';
-import unsplash from '../api/unsplash';
-import SearchBar from './SearchBar';
-import ImageList from './ImageList';
+// import './App.css';
+import Accordion from './Accordion';
 
-class App extends React.Component {
+const items = [
+  {
+    title: 'What is React?',
+    content: 'React is a front end javascript framework.',
+  },
+  {
+    title: 'Why use React?',
+    content: 'React is a favorite JS library among engineers.',
+  },
+  {
+    title: 'How do you use React?',
+    content: 'You use React by creating components.',
+  },
+];
+
+export default () => {
+  return (
+    <div>
+      <Accordion items={items} />
+    </div>
+  );
+
+  /*
   constructor(props) {
     super(props);
     this.state = { images: [] };
@@ -27,37 +47,37 @@ class App extends React.Component {
         <ImageList images={this.state.images} />
       </div>
     );
-    /*  constructor(props) {
-      super(props);
-      this.state = { lat: null, errorMessage: '' };
-    }
+  }
 
-    componentDidMount() {
-      window.navigator.geolocation.getCurrentPosition(
-        position => this.setState({ lat: position.coords.latitude }),
-        positionError => this.setState({ errorMessage: positionError.message }),
+
+  constructor(props) {
+    super(props);
+    this.state = { lat: null, errorMessage: '' };
+  }
+
+  componentDidMount() {
+    window.navigator.geolocation.getCurrentPosition(
+      position => this.setState({ lat: position.coords.latitude }),
+      positionError => this.setState({ errorMessage: positionError.message }),
+    );
+  }
+
+  renderContent() {
+    if (this.state.errorMessage && !this.state.lat) {
+      return (
+        <div>
+          Error:
+          {this.state.errorMessage}
+        </div>
       );
     }
-
-    renderContent() {
-      if (this.state.errorMessage && !this.state.lat) {
-        return (
-          <div>
-            Error:
-            {this.state.errorMessage}
-          </div>
-        );
-      }
-      if (!this.state.errorMessage && this.state.lat) {
-        return <SeasonDisplay lat={this.state.lat} />;
-      }
-      return <Spinner message="Please accept location request." />;
+    if (!this.state.errorMessage && this.state.lat) {
+      return <SeasonDisplay lat={this.state.lat} />;
     }
-
-    render() {
-      return <div className="border red">{this.renderContent()}</div>;
-    } */
+    return <Spinner message="Please accept location request." />;
   }
-}
 
-export default App;
+  render() {
+    return <div className="border red">{this.renderContent()}</div>;
+  } */
+};
