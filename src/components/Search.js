@@ -3,13 +3,23 @@ import axios from 'axios';
 
 const Search = () => {
   const [term, setTerm] = useState('Cat');
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
 
   // The action of useEffect changes according to the type of the second parameter.
   // nothing => Called whenever the screen is rendered.
   // [] => Called only at initial render.
   // [data] => Called whenever data changes.
-  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [term]);
+
   useEffect(() => {
     const search = async () => {
       const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
@@ -18,26 +28,13 @@ const Search = () => {
           list: 'search',
           origin: '*',
           format: 'json',
-          srsearch: term,
+          srsearch: debouncedTerm,
         },
       });
       setResults(data.query.search);
     };
-
-    if (term && !results.length) {
-      search();
-    } else {
-      const timeoutId = setTimeout(() => {
-        if (term) {
-          search();
-        }
-      }, 750);
-
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [term]);
+    search();
+  }, [debouncedTerm]);
 
   const renderedResults = results.map(result => {
     return (
@@ -75,5 +72,7 @@ const Search = () => {
     </div>
   );
 };
+
+Search.propTypes = {};
 
 export default Search;
