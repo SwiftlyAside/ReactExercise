@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Accordion = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -24,6 +25,15 @@ const Accordion = ({ items }) => {
     );
   });
   return <div className="ui styled accordion">{renderedItems}</div>;
+};
+
+Accordion.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      content: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default Accordion;

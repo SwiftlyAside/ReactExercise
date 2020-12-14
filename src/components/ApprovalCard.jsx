@@ -1,4 +1,5 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
 
 const ApprovalCard = props => (
   <div className="ui card">
@@ -11,5 +12,12 @@ const ApprovalCard = props => (
     </div>
   </div>
 );
+
+ApprovalCard.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
 
 export default ApprovalCard;

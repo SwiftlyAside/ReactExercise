@@ -1,5 +1,6 @@
 import './SeasonDisplay.css';
 import React from 'react';
+import * as PropTypes from 'prop-types';
 
 const seasonConfig = {
   summer: {
@@ -29,6 +30,10 @@ const SeasonDisplay = props => {
       <i className={`icon-right massive ${iconName} icon`} />
     </div>
   );
+};
+
+SeasonDisplay.propTypes = {
+  lat: PropTypes.number.isRequired,
 };
 
 export default SeasonDisplay;

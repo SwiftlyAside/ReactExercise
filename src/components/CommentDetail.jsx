@@ -1,4 +1,5 @@
 import React from 'react';
+import * as propTypes from 'prop-types';
 
 const CommentDetail = props => (
   <div className="comment">
@@ -16,5 +17,12 @@ const CommentDetail = props => (
     </div>
   </div>
 );
+
+CommentDetail.propTypes = {
+  avatar: propTypes.string.isRequired,
+  author: propTypes.string.isRequired,
+  timeAgo: propTypes.string.isRequired,
+  content: propTypes.string.isRequired,
+};
 
 export default CommentDetail;
