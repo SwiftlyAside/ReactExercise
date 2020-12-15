@@ -14,6 +14,5 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/jsx-curly-newline': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
-    'react/react-in-jsx-scope': 'warn',
   },
 };

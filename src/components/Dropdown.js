@@ -1,13 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as PropTypes from 'prop-types';
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener('click', () => {
+    const onBodyClick = event => {
+      if (ref.current.contains(event.target)) {
+        return;
+      }
       setOpen(false);
-    });
+    };
+
+    document.body.addEventListener('click', onBodyClick);
+
+    return () => {
+      document.body.removeEventListener('click', onBodyClick);
+    };
   }, []);
 
   const renderedOptions = options.map(option => {
@@ -26,10 +36,11 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       </div>
     );
   });
+
   return (
-    <div className="ui form">
+    <div ref={ref} className="ui form">
       <div className="field">
-        <label className="label">Select a Color</label>
+        <label className="label">{label}</label>
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
         <div
           onClick={() => setOpen(!open)}
@@ -47,6 +58,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 };
 
 Dropdown.propTypes = {
+  label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({ label: PropTypes.string, value: PropTypes.string }),
   ).isRequired,
