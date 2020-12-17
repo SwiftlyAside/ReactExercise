@@ -43,11 +43,11 @@ const Convert = ({ language, text }) => {
 };
 
 Convert.propTypes = {
-  language: PropTypes.string.isRequired,
-  text: PropTypes.shape({
+  language: PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.string,
   }).isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Convert;
