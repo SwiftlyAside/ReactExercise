@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import './App.css';
-import Translate from './components/Translate';
-import Accordion from './components/Accordion';
-import Search from './components/Search';
-import Route from './components/Route';
-import Dropdown from './components/Dropdown';
-import Header from './components/Header';
+// import Translate from './components/Translate';
+// import Accordion from './components/Accordion';
+// import Search from './components/Search';
+// import Route from './components/Route';
+// import Dropdown from './components/Dropdown';
+// import Header from './components/Header';
+// eslint-disable-next-line no-unused-vars
+import { selectSong } from './actions';
+import SongList from './components/SongList';
 
+/*
 const items = [
   {
     title: 'What is React?',
@@ -36,8 +40,19 @@ const options = [
     value: 'blue',
   },
 ];
+*/
 
 export default () => {
+  return (
+    <div className="ui container grid">
+      <div className="ui row">
+        <div className="column eight wide">
+          <SongList />
+        </div>
+      </div>
+    </div>
+  );
+  /*
   const [selected, setSelected] = useState(options[0]);
 
   return (
@@ -62,7 +77,7 @@ export default () => {
       </Route>
     </div>
   );
-
+  */
   /*
   constructor(props) {
     super(props);
