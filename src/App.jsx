@@ -6,9 +6,8 @@ import React from 'react';
 // import Route from './components/Route';
 // import Dropdown from './components/Dropdown';
 // import Header from './components/Header';
-// eslint-disable-next-line no-unused-vars
-import { selectSong } from './actions';
 import SongList from './components/SongList';
+import SongDetail from './components/SongDetail';
 
 /*
 const items = [
@@ -48,6 +47,9 @@ export default () => {
       <div className="ui row">
         <div className="column eight wide">
           <SongList />
+        </div>
+        <div className="column eight wide">
+          <SongDetail />
         </div>
       </div>
     </div>
