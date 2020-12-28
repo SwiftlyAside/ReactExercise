@@ -6,8 +6,9 @@ import React from 'react';
 // import Route from './components/Route';
 // import Dropdown from './components/Dropdown';
 // import Header from './components/Header';
-import SongList from './components/SongList';
-import SongDetail from './components/SongDetail';
+// import SongList from './components/SongList';
+// import SongDetail from './components/SongDetail';
+import PostList from './components/PostList';
 
 /*
 const items = [
@@ -43,6 +44,13 @@ const options = [
 
 export default () => {
   return (
+    <div className="ui container">
+      <PostList />
+    </div>
+  );
+
+  /*
+  return (
     <div className="ui container grid">
       <div className="ui row">
         <div className="column eight wide">
@@ -54,6 +62,8 @@ export default () => {
       </div>
     </div>
   );
+
+   */
   /*
   const [selected, setSelected] = useState(options[0]);
 
