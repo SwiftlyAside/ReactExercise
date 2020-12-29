@@ -7,3 +7,9 @@ export const selectSong = song => {
     payload: song,
   };
 };
+
+export const fetchPosts = () => {
+  return {
+    type: 'FETCH_POSTS',
+  };
+};
