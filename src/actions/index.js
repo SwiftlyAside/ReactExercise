@@ -1,5 +1,5 @@
-// Action creator
-// eslint-disable-next-line import/prefer-default-export
+import jsonPlaceholder from '../apis/jsonPlaceholder';
+
 export const selectSong = song => {
   // Return an action.
   return {
@@ -8,8 +8,8 @@ export const selectSong = song => {
   };
 };
 
-export const fetchPosts = () => {
-  return {
-    type: 'FETCH_POSTS',
-  };
+export const fetchPosts = () => async dispatch => {
+  const response = await jsonPlaceholder.get('/posts');
+
+  dispatch({ type: 'FETCH_POSTS', payload: response });
 };
