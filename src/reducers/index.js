@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import postsReducer from './postsReducer';
 
 const songsReducer = () => {
   return [
@@ -20,4 +21,5 @@ const selectedSongReducer = (selectedSong = null, action) => {
 export default combineReducers({
   songs: songsReducer,
   selectedSong: selectedSongReducer,
+  posts: postsReducer,
 });
